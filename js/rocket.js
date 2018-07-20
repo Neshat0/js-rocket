@@ -15,17 +15,38 @@ var changeState = function (state) {
 			if (countdownNumber <= 0) {
 				changeState(3);
 			}
+
+			if (countdownNumber == 5) {
+				document.getElementById('nervous').className = 'nervous show';
+			}
+
+
+			if (countdownNumber == 3) {
+				document.getElementById('cant-wait').className = 'cant-wait show';
+				document.getElementById('nervous').className = 'nervous';
+			}
+
+			if (countdownNumber == 1) {
+				document.getElementById('cant-wait').className = 'cant-wait';
+			}
+
+			if (countdownNumber <= 0) {
+				changeState(3);
+			}
 		}, 500)
 	} else if (state == 3) {
 		var success = setTimeout(function () { 
 			var randomNumber = Math.round(Math.random()*10);
 
 			//success
-			if (randomNumber > 3) {
+			if (randomNumber > 4) {
 				changeState(4);
 			} else {
 				changeState(5); // oh no!
 			}
 		}, 2000);
+	} else {
+		document.getElementById("nervous").className = 'nervous';
+		document.getElementById("cant-wait").className = 'cant-wait';
 	}
 }
